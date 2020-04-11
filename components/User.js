@@ -25,7 +25,7 @@ const User = (props) => (
 );
 
 //Render Prop whose only child can be a function 
-User.PropTypes = {
+User.propTypes = {
     children: PropTypes.func.isRequired,
 };
  
