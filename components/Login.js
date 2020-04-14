@@ -47,7 +47,7 @@ class Login extends Component {
                         password: '',
                         Fname: '',
                     });
-                    Router.push('/');
+                    //TODO: If user came in throu Login Page or invalid page, route them to items.
                 }}>
                     <fieldset disabled={loading} aria-busy={loading}>
                         <h2>Log Into your Account</h2>
