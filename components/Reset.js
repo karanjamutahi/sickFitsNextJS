@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
+import swal from '@sweetalert/with-react';
 import Router from 'next/router';
 
 import Form from './styles/Form';
 import Error from './ErrorMessage';
+import { CURRENT_USER_QUERY } from './User';
 
 
 const RESET_MUTATION = gql`
@@ -41,6 +43,10 @@ class Reset extends Component {
         this.setState({ [e.target.name] : e.target.value });
     };
 
+    resetSuccess = async () => {
+        await swal("Password Reset Successful", "We've saved your new password. Don't tell it to anyone","success");
+        return Router.push("/");
+    }
 
     render() {
         return (
@@ -48,7 +54,7 @@ class Reset extends Component {
                 resetToken : this.props.resetToken,
                 password: this.state.password,
                 confirmPassword: this.state.confirmPassword,
-            }}>
+            }}  refetchQueries={[{query: CURRENT_USER_QUERY}]} awaitRefetchQueries={true}>
                 {(reset, { loading, error, called }) => {
                 return(
                 <Form method="POST" onSubmit={ async (e) => {
@@ -64,7 +70,8 @@ class Reset extends Component {
                     <fieldset disabled={loading} aria-busy={loading}>
                         <h2>Reset Your Password</h2>
                         <Error error={error}></Error>
-                        {!error && !loading && called && <p>Password reset successful!</p>}
+                        {(!error && !loading && called) ? this.resetSuccess() :
+                        <>
                         <label htmlFor="password">
                             Password
                             <input type="password" name="password" id="password" placeholder='john.doe@gmail.com' required value={this.state.password} onChange={this.saveToState}/>
@@ -74,6 +81,8 @@ class Reset extends Component {
                             <input type="password" name="confirmPassword" id="confirmPassword" placeholder='john.doe@gmail.com' required value={this.state.confirmPassword} onChange={this.saveToState}/>
                         </label>
                         <button type="submit">Reset Password</button>
+                        </>                        
+                        }
                     </fieldset>
                 </Form>
                 )}}
