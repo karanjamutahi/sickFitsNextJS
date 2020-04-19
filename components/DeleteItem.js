@@ -31,8 +31,10 @@ class DeleteItem extends Component {
                 {(deleteItem, { error }) => (
                     <button onClick={ async () => {
                         
-                        if( await swal('Are you sure you want to Delete this item ?', { buttons: ['No', 'Yes'], icon: 'warning'})) {
-                            deleteItem();
+                        if( await swal('Are you sure you want to Delete this item ?', { buttons: ['No', 'Yes'], icon: 'warning', dangerMode:true })) {
+                            deleteItem().catch(err => {
+                                swal(err.message, "" ,"error", { timer: 3000 });
+                            });
                         }
                     }}>{this.props.children}</button>
                     )}  
