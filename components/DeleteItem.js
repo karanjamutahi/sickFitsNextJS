@@ -3,6 +3,7 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import swal from '@sweetalert/with-react';
 import { ALL_ITEMS_QUERY } from './Items';
+import { CURRENT_USER_QUERY } from './User';
 
 const DELETE_ITEM_MUTATION = gql`
     mutation DELETE_ITEM_MUTATION($id: ID!) {
@@ -14,15 +15,21 @@ const DELETE_ITEM_MUTATION = gql`
 
 class DeleteItem extends Component {
 
-    update = (cache, payload) => { //TODO: Investigate why this doesn't work and possible side effects
+    update = (cache, payload) => {  
         //Manually update cache on client so it matches server
         //1. Read cache and know whats on it
         const data = cache.readQuery({ query: ALL_ITEMS_QUERY});
-        console.log(data);
         //2. Filter the deleted item out
         data.items = data.items.filter(item => item.id !== payload.data.deleteItem.id)
         //3. Put the items back 
         cache.writeQuery({ query:ALL_ITEMS_QUERY, data });
+
+        //Do the same for Cart Items
+        
+        const currentUser = cache.readQuery({ query: CURRENT_USER_QUERY});
+        currentUser.me.cart = currentUser.me.cart.filter(cartItem => cartItem.item.id !== payload.data.deleteItem.id); //TODO: Update this so that it only deletes the item property and not the whole cartItem
+        cache.writeQuery({ query:CURRENT_USER_QUERY, data:currentUser}); 
+        
     };
 
     render() {

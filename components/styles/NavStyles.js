@@ -6,6 +6,11 @@ const NavStyles = styled.ul`
   display: flex;
   justify-self: end;
   font-size: 2rem;
+  .sticky{
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
   a,
   button {
     padding: 1rem 3rem;
@@ -13,7 +18,7 @@ const NavStyles = styled.ul`
     align-items: center;
     position: relative;
     text-transform: uppercase;
-    font-weight: 900;
+    font-weight: 800;
     font-size: 1em;
     background: none;
     border: 0;
