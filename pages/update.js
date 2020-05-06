@@ -1,11 +1,12 @@
 
 import UpdateItem from '../components/UpdateItem';
+import PleaseSignIn from '../components/PleaseSignIn';
 
 const Update = (props) => {
     return(
-    <div>
+    <PleaseSignIn>
         <UpdateItem id={props.query.id}></UpdateItem>
-    </div>
+    </PleaseSignIn>
     )
 } 
 

@@ -1,10 +1,14 @@
-import Link from 'next/link'
 import Items from '../components/Items';
-import gql from 'graphql-tag'
+import React from 'react';
 
-const Home = props => (
+const version = React.version;
+
+const Home = props => {
+    console.log(`React version = ${version}`);
+    return (
     <div>
         <Items page={parseInt(props.query.page) || 1}/>
     </div>
-);
+)};
+
 export default Home;
