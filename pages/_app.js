@@ -7,7 +7,7 @@ import withData from '../lib/withData';
 class myApp extends App {
     static async getInitialProps({ Component,  ctx}){
         let pageProps = {};
-        if(Component.getInitialProps){ {/**If Component has props */}
+        if(Component.getInitialProps){ {/**If a Component has props */}
             pageProps = await Component.getInitialProps(ctx);
         }
 
