@@ -20,10 +20,18 @@ const mocks = [
             ...fakeUser(),
             cart: [fakeCartItem()]
         }}}
+    },
+    {
+        request: {query: CREATE_ORDER_MUTATION, variables: {
+
+        }},
+        result: { data: { createOrder: {
+
+        }}}
     }
 ]
-describe("TakeMyMoney Component", () => {
-    it("Renders and matches snapshot", () => {
+describe("TakeMyMoney Component", async () => {
+    xit("Renders and matches snapshot", () => {
         const wrapper = mount(
             <MockedProvider mocks={mocks}>
                 <TakeMyMoney></TakeMyMoney>
@@ -31,5 +39,7 @@ describe("TakeMyMoney Component", () => {
         );
 
         console.log(wrapper.debug());
+        await wait();
+        wrapper.update();
     });
 });
