@@ -6,11 +6,6 @@ import { TOGGLE_CART_MUTATION } from './Cart';
 import { Mutation } from 'react-apollo';
 import CartCount from './CartCount';
 
-const myfunc = (otherfunc) => {
-  console.log("RAn");
-  otherfunc();
-}
-
 const Nav = () => (
       <User>
         {({ data: { me } }) => (

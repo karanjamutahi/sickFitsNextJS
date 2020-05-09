@@ -32,8 +32,8 @@ class CreateItem extends Component {
     state = {
         title: '',
         description: '',
-        image: null,
-        largeImage: null,
+        image: '',
+        largeImage: '',
         price: 0
     };
 
@@ -66,17 +66,18 @@ class CreateItem extends Component {
             <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state} refetchQueries={ALL_ITEMS_QUERY}>
                 {(createItem, { loading, error})=>(
 
-            <Form onSubmit={ async e => {
+            <Form data-test="CreateItem" onSubmit={ async e => {
                 // 1.Stop form from submitting
                 e.preventDefault();
                 // 2. Poll for image to upload & return a URL
+                /*
                 while(!this.state.largeImage) { 
                     loading=true; //Hold the line & Disable the fieldset
                 }
                 loading = false; //Re-Enable the fieldset
+                */
                 //3. Run the mutation
                 const { data } = await createItem();
-                console.log(data);
                 // 3. Change them to the Single Item Page
                 Router.push(`/item/[pid]`, `/item/${data.createItem.id}`);
             }}>

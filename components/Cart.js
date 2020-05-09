@@ -40,7 +40,7 @@ const Cart = () => {
             const { me } = user.data;
             if(!me) return null;
             return (
-                <CartStyles open={localState.data.cartOpen || false}>
+                <CartStyles data-test="cart" open={localState.data.cartOpen || false}>
                     <header>
                         <CloseButton onClick={toggleCart} title="close">&times;</CloseButton>
                         <Supreme>{`${me.firstname}'s Cart`}</Supreme>

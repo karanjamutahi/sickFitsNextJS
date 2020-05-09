@@ -23,7 +23,7 @@ class AddToCart extends React.Component {
                 }}>
                 {(addToCart, { loading, error }) => {
                     return (
-                        <button onClick={addToCart}>Add To Cart 🛒</button>
+                        <button onClick={addToCart}>Add{loading && 'ing'} To Cart 🛒</button>
                     )
                 }}
             </Mutation>
@@ -33,3 +33,4 @@ class AddToCart extends React.Component {
 }
 
 export default AddToCart;
+export { ADD_TO_CART_MUTATION };

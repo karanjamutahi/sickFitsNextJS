@@ -45,7 +45,7 @@ class Signup extends Component {
                 {(signup, { loading, error }) => {
 
                 return(
-                <Form method="POST" onSubmit={ async (e) => {
+                <Form data-test="signup" method="POST" onSubmit={ async (e) => {
                     e.preventDefault();
                     const res = await signup();
                     this.setState({
@@ -84,3 +84,4 @@ class Signup extends Component {
 
 
 export default Signup;
+export { SIGNUP_MUTATION };

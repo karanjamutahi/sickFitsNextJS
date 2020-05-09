@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav Component renders a minimal nav when signed out 1`] = `
+<ul
+  className="NavStyles-sc-11c0d2g-0 fFUdxh"
+>
+  <Link
+    href="/items"
+  >
+    <a
+      href="/items"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      Shop
+    </a>
+  </Link>
+  <Link
+    href="/login"
+  >
+    <a
+      href="/login"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      Log In
+    </a>
+  </Link>
+</ul>
+`;
+
+exports[`Nav Component renders the amount of items in the cart 1`] = `
+<div
+  className="count CartCount__Dot-xxvp4g-1 jBbjcV"
+>
+  9
+</div>
+`;
