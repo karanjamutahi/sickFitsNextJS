@@ -45,7 +45,6 @@ class Reset extends Component {
 
     resetSuccess = async () => {
         await swal("Password Reset Successful", "We've saved your new password. Don't tell it to anyone","success", {buttons: false});
-        console.log(Router.push("/"));
     }
 
     render() {
@@ -60,7 +59,6 @@ class Reset extends Component {
                 <Form method="POST" onSubmit={ async (e) => {
                     e.preventDefault();
                     const res = await reset();
-                    console.log(res);
                     this.setState({
                         password: '',
                         confirmPassword: '',

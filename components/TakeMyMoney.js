@@ -38,12 +38,13 @@ class TakeMyMoney extends React.Component {
         return(
             <User>
                 {
-                    ({ data: { me }}) => {
+                    ({ data: { me }, loading}) => {
                         return (
                             <Mutation mutation={CREATE_ORDER_MUTATION} refetchQueries={[{query: CURRENT_USER_QUERY}, {query: ALL_ORDERS_QUERY}]}>
                                 {
                                     (createOrder) => {
                                         return (
+                                            !loading && 
                                             <StripeCheckout
                                                 amount={calcTotalPrice(me.cart)}
                                                 name="Sick Fits"
@@ -69,3 +70,4 @@ class TakeMyMoney extends React.Component {
 }
 
 export default TakeMyMoney;
+export { CREATE_ORDER_MUTATION };
