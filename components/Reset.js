@@ -9,7 +9,6 @@ import Form from './styles/Form';
 import Error from './ErrorMessage';
 import { CURRENT_USER_QUERY } from './User';
 
-
 const RESET_MUTATION = gql`
     mutation RESET_MUTATION(
         $resetToken: String!,

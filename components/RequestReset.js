@@ -29,7 +29,6 @@ class RequestReset extends Component {
         this.setState({ [e.target.name] : e.target.value });
     };
 
-
     render() {
         return (
             <Mutation mutation={REQUEST_RESET_MUTATION} variables={{email:this.state.email}}>
