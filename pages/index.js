@@ -2,7 +2,8 @@ import React from 'react';
 import Items from '../components/Items';
 
 const Home = props => {
-    console.log(`React version = ${React.version}`);
+    //console.log(`React version = ${React.version}`);
+    console.log('Getting Stuck here');
     return (
     <div>
         <Items page={parseInt(props.query.page) || 1}/>
