@@ -41,6 +41,7 @@ const ALL_ITEMS_QUERY = gql`
 
 class Items extends Component {
     render() {
+        console.log("Inside Items");
         return (
             <Center>
                 <Pagination page={this.props.page}></Pagination>
@@ -49,6 +50,7 @@ class Items extends Component {
                     first: perPage,     
                 }}>
                     {({ error, loading, data }) => {
+                        console.log("Inside Items query");
                         if(loading) return <p>Loading ...</p>
                         if(error) return <p>Error :(</p>
                         return <ItemsList>{ data.items.map( item => <Item item={item} key={item.id}></Item>) }</ItemsList>
